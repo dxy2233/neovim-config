@@ -22,7 +22,9 @@ return {
             },
           }
         },
-        volar = {}
+        volar = {
+          filetypes = { "vue" }
+        }
       },
       setup = {
         eslint = function()
@@ -44,8 +46,10 @@ return {
         end,
         volar = function()
           require("lazyvim.util").on_attach(function(client)
-            client.server_capabilities.documentFormattingProvider = false
-            client.server_capabilities.documentRangeFormattingProvider = false
+            if client.name == 'volar' then
+              client.server_capabilities.documentFormattingProvider = false
+              client.server_capabilities.documentRangeFormattingProvider = false
+            end
           end)
         end
       },

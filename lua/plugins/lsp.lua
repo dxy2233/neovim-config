@@ -24,7 +24,7 @@ return {
         },
         volar = {
           filetypes = { "vue" }
-        }
+        },
       },
       setup = {
         eslint = function()

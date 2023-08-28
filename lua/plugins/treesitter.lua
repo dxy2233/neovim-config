@@ -5,7 +5,9 @@ return {
       ensure_installed = {
         "vue",
         "scss",
-        "css"
+        "css",
+        "rust",
+        "toml"
       },
     }
   }

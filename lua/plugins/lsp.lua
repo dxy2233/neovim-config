@@ -74,28 +74,97 @@ return {
     end,
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    enabled = false,
-    -- event = { "BufReadPre", "BufNewFile" },
+    "stevearc/conform.nvim",
     dependencies = { "mason.nvim" },
-    opts = function(_, opts)
-      local nls = require("null-ls")
-      table.insert(opts.sources, nls.builtins.formatting.prettier.with({ filetypes = { "css", "scss" } }))
-      -- opts = function()
-      --   local nls = require("null-ls")
-      --   return {
-      --     root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
-      --     sources = {
-      --       -- nls.builtins.formatting.prettier,
-      --       -- nls.builtins.formatting.fish_indent,
-      --       -- nls.builtins.diagnostics.fish,
-      --       -- nls.builtins.formatting.eslint,
-      --       -- nls.builtins.diagnostics.eslint,
-      --       -- nls.builtins.formatting.stylua,
-      --       -- nls.builtins.formatting.shfmt,
-      --       -- nls.builtins.diagnostics.flake8,
-      --     },
-      --   }
+    lazy = true,
+    cmd = "ConformInfo",
+    keys = {
+      {
+        "<leader>cF",
+        function()
+          require("conform").format({ formatters = { "injected" } })
+        end,
+        mode = { "n", "v" },
+        desc = "Format Injected Langs",
+      },
+    },
+    init = function()
+      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+      -- Install the conform formatter on VeryLazy
+      require("lazyvim.util").on_very_lazy(function()
+        require("lazyvim.plugins.lsp.format").custom_format = function(buf)
+          return require("conform").format({ bufnr = buf })
+        end
+      end)
     end,
+    opts = {
+      formatters_by_ft = {
+        lua = { "stylua" },
+        fish = { "fish_indent" },
+        sh = { "shfmt" },
+      },
+      -- LazyVim will merge the options you set here with builtin formatters.
+      -- You can also define any custom formatters here.
+      ---@type table<string,table>
+      formatters = {
+        injected = { options = { ignore_errors = true } },
+        -- -- Example of using dprint only when a dprint.json file is present
+        -- dprint = {
+        --   condition = function(ctx)
+        --     return vim.fs.find({ "dprint.json" }, { path = ctx.filename, upward = true })[1]
+        --   end,
+        -- },
+      },
+    },
+    config = function(_, opts)
+      opts.formatters = opts.formatters or {}
+      for name, formatter in pairs(opts.formatters) do
+        if type(formatter) == "table" then
+          local ok, defaults = pcall(require, "conform.formatters." .. name)
+          if ok and type(defaults) == "table" then
+            opts.formatters[name] = vim.tbl_deep_extend("force", {}, defaults, formatter)
+          end
+        end
+      end
+      require("conform").setup(opts)
+    end,
+  },
+  -- {
+  --   "williamboman/mason.nvim",
+  --   opts = function(_, opts)
+  --     table.insert(opts.ensure_installed, "prettierd")
+  --   end,
+  -- },
+  -- {
+  --   "nvimtools/none-ls.nvim",
+  --   optional = true,
+  --   opts = function(_, opts)
+  --     local nls = require("null-ls")
+  --     table.insert(opts.sources, nls.builtins.formatting.prettierd)
+  --   end,
+  -- },
+  {
+    "stevearc/conform.nvim",
+    optional = true,
+    opts = {
+      formatters_by_ft = {
+        -- ["javascript"] = { { "prettierd", "prettier" } },
+        -- ["javascriptreact"] = { { "prettierd", "prettier" } },
+        -- ["typescript"] = { { "prettierd", "prettier" } },
+        -- ["typescriptreact"] = { { "prettierd", "prettier" } },
+        -- ["vue"] = { { "prettierd", "prettier" } },
+        ["css"] = { { "prettierd", "prettier" } },
+        ["scss"] = { { "prettierd", "prettier" } },
+        ["less"] = { { "prettierd", "prettier" } },
+        ["html"] = { { "prettierd", "prettier" } },
+        ["json"] = { { "prettierd", "prettier" } },
+        ["jsonc"] = { { "prettierd", "prettier" } },
+        ["yaml"] = { { "prettierd", "prettier" } },
+        ["markdown"] = { { "prettierd", "prettier" } },
+        ["markdown.mdx"] = { { "prettierd", "prettier" } },
+        ["graphql"] = { { "prettierd", "prettier" } },
+        ["handlebars"] = { { "prettierd", "prettier" } },
+      },
+    },
   },
 }

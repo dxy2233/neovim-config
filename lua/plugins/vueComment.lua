@@ -1,24 +1,24 @@
 return {
-  -- {
-  --   "echasnovski/mini.comment",
-  --   enabled = false
-  -- },
   {
-    'nvim-treesitter/nvim-treesitter',
+    "echasnovski/mini.comment",
+    enabled = false,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
     dependencies = {
-      'JoosepAlviste/nvim-ts-context-commentstring',
+      "JoosepAlviste/nvim-ts-context-commentstring",
     },
     opts = {
       context_commentstring = {
         enable = true,
       },
-    }
+    },
   },
   {
     "terrortylor/nvim-comment",
     config = function()
-      require('nvim_comment').setup()
-    end
+      require("nvim_comment").setup()
+    end,
   },
   {
     "hrsh7th/nvim-cmp",

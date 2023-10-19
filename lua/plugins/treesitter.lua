@@ -7,8 +7,8 @@ return {
         "scss",
         "css",
         "rust",
-        "toml"
+        "toml",
       },
-    }
-  }
+    },
+  },
 }

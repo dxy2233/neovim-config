@@ -1,6 +1,6 @@
 return {
   {
-    'Mofiqul/dracula.nvim'
+    "Mofiqul/dracula.nvim",
   },
   {
     "LazyVim/LazyVim",
@@ -16,13 +16,12 @@ return {
           theme = "dracula-nvim",
         },
       }
-    end
+    end,
   },
   {
     "echasnovski/mini.indentscope",
     opts = {
-      symbol = '\\',
       options = { try_as_border = true },
     },
-  }
+  },
 }

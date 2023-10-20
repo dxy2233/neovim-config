@@ -1,8 +1,8 @@
 return {
-  {
-    "echasnovski/mini.comment",
-    enabled = false,
-  },
+  -- {
+  --   "echasnovski/mini.comment",
+  --   enabled = false,
+  -- },
   {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {

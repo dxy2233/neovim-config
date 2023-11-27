@@ -3,17 +3,17 @@ return {
   --   "echasnovski/mini.comment",
   --   enabled = false,
   -- },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    dependencies = {
-      "JoosepAlviste/nvim-ts-context-commentstring",
-    },
-    opts = {
-      context_commentstring = {
-        enable = true,
-      },
-    },
-  },
+  -- {
+  --   "nvim-treesitter/nvim-treesitter",
+  --   dependencies = {
+  --     "JoosepAlviste/nvim-ts-context-commentstring",
+  --   },
+  --   opts = {
+  --     context_commentstring = {
+  --       enable = true,
+  --     },
+  --   },
+  -- },
   {
     "terrortylor/nvim-comment",
     config = function()

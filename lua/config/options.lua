@@ -2,7 +2,7 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
--- local opt = vim.opt
+local opt = vim.opt
 --
 -- -- 代码折叠
 -- opt.foldmethod = 'expr'
@@ -10,4 +10,4 @@
 -- opt.foldenable = false
 -- opt.foldlevel = 99
 --
--- opt.relativenumber = false
+opt.relativenumber = false

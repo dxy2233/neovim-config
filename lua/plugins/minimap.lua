@@ -6,7 +6,7 @@ return {
       local scrollbar = require("scrollbar")
       -- local colors = require("dracula").colors()
       scrollbar.setup({
-        handle = { color = "#ff8c94" },
+        handle = { color = "#a80216" },
         excluded_filetypes = { "prompt", "TelescopePrompt", "noice", "notify", "nerdtree" },
         current_only = true,
         base = "buffer",

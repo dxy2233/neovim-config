@@ -6,6 +6,8 @@ return {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = "dracula",
+      -- colorscheme = "gruvbox",
+      -- colorscheme = "tokyonight",
     },
   },
   {
@@ -13,7 +15,8 @@ return {
     opts = function()
       return {
         options = {
-          theme = "dracula-nvim",
+          theme = "dracula",
+          -- theme = "tokyonight",
         },
       }
     end,
@@ -24,4 +27,17 @@ return {
       options = { try_as_border = true },
     },
   },
+
+  -- {
+  --   "folke/tokyonight.nvim",
+  --   lazy = true,
+  --   opts = {
+  --     -- style = "moon",
+  --     -- transparent = true,
+  --     -- styles = {
+  --     --   sidebars = "transparent",
+  --     --   floats = "transparent",
+  --     -- },
+  --   },
+  -- },
 }

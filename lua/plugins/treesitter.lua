@@ -11,6 +11,7 @@ return {
   --       "javascript",
   --       "html",
   --       "json",
+  --       "yuck",
   --     },
   --   },
   -- },

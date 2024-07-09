@@ -1,12 +1,12 @@
 return {
   {
     "neovim/nvim-lspconfig",
-    event = "LazyFile",
+    -- event = "LazyFile",
     dependencies = {
-      { "folke/neoconf.nvim", cmd = "Neoconf", config = false, dependencies = { "nvim-lspconfig" } },
-      { "folke/neodev.nvim",  opts = {} },
-      "mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
+      -- { "folke/neoconf.nvim", cmd = "Neoconf", config = false, dependencies = { "nvim-lspconfig" } },
+      -- { "folke/neodev.nvim", opts = {} },
+      -- "mason.nvim",
+      -- "williamboman/mason-lspconfig.nvim",
     },
     opts = {
       diagnostics = {
@@ -19,10 +19,10 @@ return {
         },
         severity_sort = true,
       },
-      inlay_hints = {
-        enabled = false,
-      },
-      capabilities = {},
+      -- inlay_hints = {
+      --   enabled = true,
+      -- },
+      -- capabilities = {},
       format = {
         timeout_ms = 5000,
       },
